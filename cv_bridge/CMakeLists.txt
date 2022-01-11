@@ -13,7 +13,9 @@ if(NOT ANDROID)
 else()
 find_package(Boost REQUIRED)
 endif()
-find_package(OpenCV 3 REQUIRED
+
+find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH
+#find_package(OpenCV 3 HINTS /usr/local/share/OpenCV NO_DEFAULT_PATH
   COMPONENTS
     opencv_core
     opencv_imgproc
@@ -30,6 +32,7 @@ catkin_package(
 )
 
 catkin_python_setup()
+include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 
 include_directories(include ${Boost_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
 
